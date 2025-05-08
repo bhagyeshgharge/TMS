@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive Navigation</title>
+    <link rel="stylesheet" href="{% static 'D:\Bhagyesh\python\django\TMS\static\css\header.css' %}">
+    <style>
+        .user-name1 {
+            font-weight: bold;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="topnav">
+        <img src="{% static 'image/logo-removebg.png' %}" alt="Logo" class="logo">
+        <p class="nav-title">Tourism Hike</p>
+        <div class="nav-links">
+
+            {% if request.path != '/' %}
+            <a href="\">Home</a>
+            {% endif %}
+            <!-- Package dropdown -->
+            <div class="dropdown-container">
+                <a href="javascript:void(0)" class="dropdown-trigger">Package <span class="dropdown-arrow">▼</span></a>
+                <div class="dropdown-content">
+                    <a href="#">Trending</a>
+                    <a href="{% url 'All_packages' %}">All Packages</a>
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'add_package' %}">Add Package</a>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="#contact">Contact</a>
+            <a href="#booking">Booking</a>
+            <a href="#about">About</a>
+
+
+
+        </div>
+        <div class="nav-profile-link">
+            {% if user.is_authenticated %}
+            <!-- <a href="{% url 'logout' %}">Logout</a> -->
+            <div class="profile-menu1" onclick="toggleDropdown()"
+                style="position: relative; cursor: pointer; float: right;">
+                <div class="menu-button1"
+                    style="background: #ffffff; padding: 6px 30px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); cursor: pointer; font-weight: bold;">
+                    ☰ Menu
+                </div>
+                <div class="dropdown-menu1" id="dropdownMenu1"
+                    style="display: none; position: absolute; top: 100%; right: 0; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 250px; padding: 15px; z-index: 100;">
+                    <div class="user-info1" style="text-align: center; margin-bottom: 10px;">
+                        {% if request.user.is_authenticated %}
+                        <span class="user-name1">{{ request.user.first_name }}</span>
+                        <small class="user-email1" style="color: gray; font-size: 12px;">{{request.user.email}}</small>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="menu-items1">
+                        <a href="#"
+                            style="display: flex; align-items: center; padding: 10px; text-decoration: none; color: black; transition: background 0.3s; border-radius: 5px;">
+                            <img src="{% static 'image/account.png' %}" alt="Account" class="icon2"
+                                style="width: 18px; height: 18px; margin-right: 12px; vertical-align: middle;">
+                            Account
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; padding: 10px; text-decoration: none; color: black; transition: background 0.3s; border-radius: 5px;">
+                            <img src="{% static 'image/setting.png' %}" alt="Settings" class="icon2"
+                                style="width: 18px; height: 18px; margin-right: 12px; vertical-align: middle;">
+                            Settings
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; padding: 10px; text-decoration: none; color: black; transition: background 0.3s; border-radius: 5px; justify-content: flex-start;">
+                            <img src="{% static 'image/help.png' %}" alt="Help" class="icon2"
+                                style="width: 18px; height: 18px; margin-left: 57px; vertical-align: middle;">
+                            Help
+                        </a>
+
+                        <div class="separator" style="border-top: 1px solid #ddd; margin: 5px 0;"></div>
+                        <a href="{% url 'logout' %}"
+                            style="display: flex; align-items: center; padding: 10px; text-decoration: none; color: black; transition: background 0.3s; border-radius: 5px;">
+                            <img src="{% static 'image/logout.png' %}" alt="Logout" class="icon2"
+                                style="width: 18px; height: 18px; margin-right: 12px; vertical-align: middle;">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            {% else %}
+            <a href="{% url 'login' %}" style="border: 1px solid black;width: 70px;color: #0b0b0b; ">Login</a>
+            <a href="{% url 'SignUp' %}" style="background: black; color: white;">Sign In</a>
+            {% endif %}
+        </div>
+        
+        <span class="icon" onclick="openNav()">&#9776;</span>
+
+        <div class="profile-menu" onclick="toggleMenu()">
+            <img src="{% static 'image/person.png' %}" alt="Profile" class="profile-icon">
+            <!-- <span class="profile-text">Profile</span> -->
+            <div class="dropdown" id="dropdownMenu">
+                <div class="user-info1" style="text-align: center; margin-bottom: 10px;">
+                    {% if request.user.is_authenticated %}
+                    <span class="user-name1">{{ request.user.first_name }}</span>
+                    <small class="user-email1" style="color: gray; font-size: 12px;">{{ request.user.email }}</small>
+                    {% endif %}
+                </div>
+                <a href="#"><img src="{% static 'image/account.png' %}" alt="Account" class="icon2"> Account</a>
+                <a href="#"><img src="{% static 'image/setting.png' %}" alt="Settings" class="icon2"> Settings</a>
+                <a href="#"><img src="{% static 'image/help.png' %}" alt="Help" class="icon2"> Help</a>
+                <div class="separator" style="border-top: 1px solid #ddd;margin: 5px 0;"></div>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"><img src="{% static 'image/logout.png' %}" alt="Logout" class="icon2">
+                    Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}"><img src="{% static 'image/login.png' %}" alt="Login" class="icon2">
+                    Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <br><br>
+       
+        <a href="/">Home</a>
+       
+        <!-- Package dropdown in sidepanel -->
+        <div class="side-dropdown">
+            <a href="javascript:void(0)" class="side-dropdown-btn" onclick="toggleSideDropdown()">
+                Package <span class="side-dropdown-icon">▼</span>
+            </a>
+            <div class="side-dropdown-content" id="sideDropdownContent">
+                <a href="#" class="sub-item">Trending</a>
+                <a href="#" class="sub-item">All Packages</a>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'add_package' %}" class="sub-item">Add Package</a>
+                {% endif %}
+            </div>
+        </div>
+        <a href="#">Contact</a>
+        <a href="#">Booking</a>
+        <a href="#">About</a>
+
+    </div>
+    <script>
+        // Function to open the side panel
+        function openNav() {
+            const sidepanel = document.getElementById("mySidepanel");
+            const menuItems = document.querySelectorAll("#mySidepanel a");
+            const itemHeight = 60;
+            const totalHeight = menuItems.length * itemHeight;
+
+            // Set the width and height of the side panel
+            sidepanel.style.width = "100%";
+            sidepanel.style.height ="100%";
+        }
+
+        // Function to close the side panel
+        function closeNav() {
+            const sidepanel = document.getElementById("mySidepanel");
+            sidepanel.style.width = "0";
+            sidepanel.style.height = "0";
+        }
+
+        // Automatically close the side panel on resize
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 600) {
+                closeNav();
+            }
+        });
+        //this for laptop
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownMenu1");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+        //this for moblie
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        document.addEventListener("click", function (event) {
+            const profileMenu = document.querySelector(".profile-menu");
+            if (!profileMenu.contains(event.target)) {
+                document.getElementById("dropdownMenu").style.display = "none";
+            }
+        });
+
+        // Toggle side dropdown for package menu in sidepanel
+        function toggleSideDropdown() {
+            const content = document.getElementById("sideDropdownContent");
+            const icon = document.querySelector(".side-dropdown-icon");
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.textContent = "▼";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = "▲";
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", function (event) {
+            // For profile menu
+            const profileMenu = document.querySelector(".profile-menu");
+            if (profileMenu && !profileMenu.contains(event.target)) {
+                document.getElementById("dropdownMenu").style.display = "none";
+            }
+
+            // For profile menu1
+            const profileMenu1 = document.querySelector(".profile-menu1");
+            if (profileMenu1 && !profileMenu1.contains(event.target)) {
+                document.getElementById("dropdownMenu1").style.display = "none";
+            }
+
+            // For main dropdown
+            const dropdownContainer = document.querySelector(".dropdown-container");
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                dropdownContainer.classList.remove("active");
+            }
+        });
+
+        // For main package dropdown in desktop view
+        document.querySelector(".dropdown-trigger").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".dropdown-container").classList.toggle("active");
+        });
+
+    </script>
+</body>
+
+</html>

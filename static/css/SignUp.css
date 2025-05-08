@@ -1,0 +1,301 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background: radial-gradient(ellipse at center, #f7f9fc, #ffffff);
+    display: flex;
+    /* Makes the body a flex container */
+    justify-content: center;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Centers content vertically */
+    min-height: 100vh;
+    /* Full viewport height for centering */
+}
+
+/* Main card styling */
+.card {
+    max-width: 30rem;
+    /* Restricts the card's width for scalability */
+    width: 90%;
+    /* Makes it responsive */
+    padding: 2rem;
+    /* Adds internal spacing */
+    margin: auto;
+    /* Centers the card horizontally */
+    background: white;
+    /* Clean white background */
+    box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.05), 0rem 1.5rem 3.5rem rgba(0, 0, 0, 0.05);
+    /* Soft shadow for depth */
+    border-radius: 0.5rem;
+    /* Rounded corners for a modern look */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo-container img {
+    align-items: flex-start;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.5rem;
+}
+
+.card h1 {
+    text-align: center;
+    /* Centers the heading text */
+    font-size: 2rem;
+    /* Scalable font size */
+    margin-bottom: 1.25rem;
+    /* Adds spacing below the heading */
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    /* Spacing between form groups */
+}
+
+.form-group label {
+    display: block;
+    /* Ensures label is on a new line */
+    margin-left: 10px;
+    /* Slight indentation */
+    font-size: 0.9rem;
+    /* Scalable text size */
+    margin-bottom: 0.5rem;
+    /* Spacing between label and input */
+}
+
+.form-group input {
+     width: calc(100% - 30px);
+    /* width: 85%; */
+    /* Centers the input field */
+    margin-left: 10px;
+    padding: 0.625rem;
+    /* Adds padding inside the input */
+    font-size: 1rem;
+    /* Scalable text size */
+    border: 1px solid #ccc;
+    /* Neutral border */
+    border-radius: 0.35rem;
+    /* Slightly rounded edges */
+}
+
+.form-group input:focus {
+    outline: none;
+    /* Removes the default blue outline */
+    border-color: #007bff;
+    /* Highlight border on focus */
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    /* Relative size for error text */
+}
+
+
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    /* Space between buttons */
+    margin-top: 1rem;
+    /* Spacing above the actions section */
+}
+
+.actions button {
+    width: 90%;
+    /* Buttons align centrally */
+    margin-left: 10px;
+    padding: 0.625rem;
+    /* Scalable padding */
+    font-size: 1rem;
+    /* Scalable font size */
+    border: none;
+    border-radius: 0.25rem;
+    /* Rounded button edges */
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #090909;
+    /* Black button background */
+    color: white;
+}
+
+.btn-outline {
+    display: flex;
+    /* Flexbox for alignment */
+    align-items: center;
+    /* Vertically align icon and text */
+    justify-content: center;
+    /* Center-align content horizontally */
+    gap: 0.5rem;
+    /* Space between icon and text */
+    margin-left: 10px;
+    width: 80%;
+    /* Buttons take up 80% of parent width */
+    padding: 0.75rem;
+    /* Add padding for a touch-friendly button */
+    font-size: 1rem;
+    /* Scalable text size */
+    text-decoration: none;
+    /* Remove underline from anchor tag */
+    color: #333;
+    /* Neutral text color */
+    border: 1px solid #090909;
+    /* Light border */
+    border-radius: 0.5rem;
+    /* Rounded corners */
+    background-color: white;
+    /* White background */
+    cursor: pointer;
+    /* Pointer cursor for hover */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Smooth hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow on hover */
+    box-sizing: border-box;
+}
+
+.btn-outline img {
+    width: 1.25rem;
+    /* Adjust icon size */
+    height: 1.25rem;
+}
+
+.divider {
+    text-align: center;
+    margin: 1.25rem 0;
+    /* Scalable spacing */
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    /* Relative width for the divider line */
+    height: 1px;
+    /* Thin line */
+    background: #ccc;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+
+
+#otp2 {
+    width: 40%;
+    padding: 0.625rem;
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    font-size: 1rem;
+    margin-left: 10px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Specific Adjustments */
+@media (max-width: 768) {
+    .card {
+        margin-top: 50px;
+        max-width: 95%;
+        /* Makes card width responsive for small screens */
+        padding: 1.5rem;
+        /* Adjust padding for mobile view */
+        max-height: 65vh;
+        /* Restrict height to 65% of viewport height */
+        min-height: 300px;
+        /* Ensures a minimum height */
+    }
+
+    .card h1 {
+        font-size: 1.25rem;
+        /* Smaller heading size */
+    }
+    .logo-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo-title {
+        font-size: 1.3rem;
+    }
+
+
+    .form-group input {
+        width: calc(100% - 20px);
+        /* Make inputs take full width */
+        font-size: 0.9rem;
+        /* Adjust input font size for mobile */
+    }
+
+    .actions button {
+        width: 95%;
+        /* Buttons span the full width on mobile */
+        font-size: 0.9rem;
+        /* Adjust button font size */
+    }
+
+
+}
+
+/* for otp  */
+@media (max-width: 768px) {
+    .otp-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        /* Add spacing between input and button */
+        justify-content: center;
+        /* Center items horizontally */
+    }
+
+    .logo-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    #otp2 {
+        width: 90px;
+        /* padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px; */
+        font-size: 0.9rem;
+    }
+
+    #sendOtpBtn {
+        margin-left: 10px !important;
+        /* Remove margin */
+        font-size: 0.6rem;
+        padding: 6px 10px;
+        width: 40%;
+        /* Adjust width dynamically */
+        max-width: 200px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,366 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-In</title>
+    <link rel="stylesheet" href="{% static 'D:\Bhagyesh\python\django\TMS\static\css\Login.css' %}">
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at center, #f7f9fc, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Logo styling */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container img {
+            align-items: flex-start;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0a3d3f;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Main card styling */
+        .card {
+            max-width: 30rem;
+            width: 90%;
+            padding: 2rem;
+            margin: auto;
+            background: white;
+            box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.05), 0rem 1.5rem 3.5rem rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+        }
+
+        .card h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-left: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .form-group input {
+            width: calc(100% - 30px);
+            margin-left: 10px;
+            padding: 0.625rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.35rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #0a9396;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            gap: 0.625rem;
+            margin-bottom: 1rem;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .actions button {
+            width: 90%;
+            padding: 0.625rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #090909;
+            color: white;
+        }
+
+        /* .btn-primary:hover {
+            background-color: #072726;
+        } */
+
+        .btn-outline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 90%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-outline:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline img {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.25rem 0;
+            position: relative;
+            color: #888;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 0.625rem;
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            /* color: #0a9396; */
+            text-decoration: underline;
+        }
+
+        .singup-option {
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .singup-option a {
+            color: #0a9396;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .singup-option a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Specific Adjustments */
+        @media (max-width: 768px) {
+            .card {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+            .logo-container img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-title {
+                font-size: 1.3rem;
+            }
+
+            .form-group input {
+                width: calc(100% - 20px);
+                font-size: 0.9rem;
+            }
+
+            .actions button {
+                width: 100%;
+            }
+
+            .btn-outline {
+                width: 100%;
+            }
+        }
+    </style> -->
+</head>
+
+<body>
+
+
+    <div class="card">
+        <div class="logo-container">
+            <img src="{% static 'image/logo-removebg.png' %}" alt="Tourism Hike Logo">
+            <!-- <div class="logo-text">Tourism Hike</div> -->
+            <!-- <div class="logo-subtext">Adventure Awaits</div> -->
+        </div>
+
+
+        <h2 style="text-align: center;">Log In Your Account</h2>
+        <!-- Error/Success Messages -->
+
+
+        <form action="{% url 'login' %}" method="POST" id="signInForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <span class="error" style="margin-left: 10px;" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••" required>
+                {% if error_message %}
+                <span class="error" style="margin-left: 10px;" id="passwordError">
+                    {{ error_message }}
+                </span>
+                {% endif %}
+
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <div class="actions">
+                <button type="submit" class="btn-primary">Log In</button>
+                <div class="forgot-password" onclick="openForgotPassword()">Forgot your password?</div>
+            </div>
+
+        </form>
+        <div class="divider">or</div>
+        <div class="actions">
+            <button class="btn-outline" onclick="signInWithGoogle()">
+                <img src="data:image/png;base64,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"
+                    alt="Google Logo"> Sign in with Google
+            </button>
+            <button class="btn-outline" onclick="signInWithFacebook()">
+                <img src="data:image/png;base64,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"
+                    alt="Facebook Logo"> Sign in with Facebook
+            </button>
+        </div>
+
+        <p style="text-align: center; margin-top: 20px;" class="singup-option">
+            Don't have an account? <a href="SignUp" style="color: #007bff; text-decoration: none;">Signup</a>
+        </p>
+    </div>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        // const signInForm = document.getElementById('signInForm');
+
+        function validateEmail(email) {
+            return /\S+@\S+\.\S+/.test(email);
+        }
+
+        signInForm.addEventListener('submit', (event) => {
+            let isValid = true;
+
+            // Validate email
+            if (!validateEmail(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                isValid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Validate password
+            if (passwordInput.value.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                console.log('Email:', emailInput.value);
+                console.log('Password:', passwordInput.value);
+            }
+        });
+
+        function openForgotPassword() {
+            alert('Forgot Password functionality is triggered.');
+        }
+
+        function signInWithGoogle() {
+            alert('Sign in with Google functionality is triggered.');
+        }
+
+        function signInWithFacebook() {
+            alert('Sign in with Facebook functionality is triggered.');
+        }
+    </script>
+</body>
+
+</html>
